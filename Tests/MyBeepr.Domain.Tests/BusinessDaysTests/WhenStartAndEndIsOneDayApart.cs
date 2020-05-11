@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using FluentAssertions;
 using Xunit;
 
@@ -8,11 +9,11 @@ namespace MyBeepr.Domain.Tests.BusinessDaysTests
     {
         private int _result;
 
-        public override void When()
+        public override async Task WhenAsync()
         {
             var startDate = new DateTime(2020, 5, 5);
             var endDate = new DateTime(2020, 5, 6);
-            _result = BusinessDaysService.GetWorkingDays(startDate, endDate);
+            _result = await BusinessDaysService.GetWorkingDays(startDate, endDate);
         }
 
         [Fact]

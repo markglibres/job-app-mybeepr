@@ -1,10 +1,25 @@
 ﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using MyBeepr.Domain.Holidays;
 
 namespace MyBeepr.Domain.BusinessDays
 {
     public class BusinessDaysService : IBusinessDaysService
     {
-        public int GetWorkingDays(DateTime start, DateTime end)
+        private readonly ILogger<BusinessDaysService> _logger;
+        private readonly IHolidayService _holidayService;
+
+        public BusinessDaysService(
+            ILogger<BusinessDaysService> logger,
+            IHolidayService holidayService)
+        {
+            _logger = logger;
+            _holidayService = holidayService;
+        }
+
+        public async Task<int> GetWorkingDays(DateTime start, DateTime end)
         {
             if (end.Date <= start.Date) return 0;
 
@@ -35,6 +50,13 @@ namespace MyBeepr.Domain.BusinessDays
 
             //subtract offset days as a result of shifting the start and end of day
             var totalWorkdays = fullDaysTotal - (startOffset + endOffset);
+
+            //get total holidays
+            var totalHolidays = await _holidayService.GetHolidays(start, end);
+
+            totalWorkdays -= totalHolidays
+                .GroupBy(h => h.Date.Date)
+                .Count();
 
             return Convert.ToInt32(totalWorkdays);
         }
