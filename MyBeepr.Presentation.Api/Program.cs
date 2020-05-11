@@ -1,6 +1,6 @@
-using MyBeepr.Presentation.Common.Configs;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using MyBeepr.Presentation.Api.Configs;
 using Serilog;
 
 namespace MyBeepr.Presentation.Api

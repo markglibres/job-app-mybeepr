@@ -24,7 +24,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyBeepr.Application\MyBeepr.Application.csproj" />
-    <ProjectReference Include="..\MyBeepr.Presentation.Common\MyBeepr.Presentation.Common.csproj" />
+    <ProjectReference Include="..\MyBeepr.Domain\MyBeepr.Domain.csproj" />
+    <ProjectReference Include="..\MyBeepr.Infrastructure\MyBeepr.Infrastructure.csproj" />
   </ItemGroup>
 
 
