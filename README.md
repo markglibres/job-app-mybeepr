@@ -76,3 +76,15 @@ is a weekend, then the holiday would be next Monday)
 1. Create a class and implement "IHolidayTypeService". See sample service [here](https://github.com/markglibres/job-app-mybeepr/blob/master/src/MyBeepr.Domain/Holidays/HolidayTypes/FixedDayHolidayService.cs)
 2. Inject your services and repository. See sample [here](https://github.com/markglibres/job-app-mybeepr/blob/master/src/MyBeepr.Presentation.Api/Configs/HolidayTypes/FixedDayHolidayConfiguration.cs)
 3. Don't forget to register your services. See sample [here](https://github.com/markglibres/job-app-mybeepr/blob/master/src/MyBeepr.Presentation.Api/Configs/BusinessDaysConfiguration.cs)
+
+## Tests
+For demo purposes, unit tests are only implement for the Domain layer. To run the unit tests, follow the steps below: 
+
+1. Change directory to the test folder
+	```
+	cd job-app-mybeepr/src/Tests/MyBeepr.Domain.Tests
+	```
+2. Run the tests
+	```
+	dotnet test
+	``` 
