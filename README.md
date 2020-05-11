@@ -25,6 +25,9 @@ The architecture / design used on this project is based on the project template 
 	dotnet run
 	``` 
  5. Check swagger UI for available endpoints: [http://localhost:5000/swagger](http://localhost:5000/swagger)
+ 6. Sample url to get number of working days: [http://localhost:5000/api/businessdays?start=2019-05-23&end=2019-05-26](http://localhost:5000/api/businessdays?start=2019-05-23&end=2019-05-26)
+	 
+	 This should return working days = 1.
 
 ## How to configure holidays
 For demo purposes, this project uses the in-memory repository for entities. Follow this [link](https://github.com/markglibres/dotnetcore-service-template/wiki/How-to-install-template) on how to use my project template for SQL database.
