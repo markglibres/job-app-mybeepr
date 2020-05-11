@@ -20,6 +20,7 @@ namespace MyBeepr.Presentation.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddServices(Configuration);
+            services.AddBusinessDays();
             services.AddControllers();
             services.AddHealthChecks();
         }
