@@ -15,8 +15,8 @@ namespace MyBeepr.Domain.Tests.HolidayTests.FixedDay
         public override async Task GivenAsync()
         {
             var repo = Fixture.Create<InMemoryRepository<FixedDayHoliday>>();
-            await repo.InsertAsync(new FixedDayHoliday(4, 24));
-            await repo.InsertAsync(new FixedDayHoliday(9, 8));
+            await repo.InsertAsync(new FixedDayHoliday("May 24 Holiday", 4, 24));
+            await repo.InsertAsync(new FixedDayHoliday("Sep 8 Holiday", 9, 8));
 
             Fixture.Customize<IRepository<FixedDayHoliday>>(o => o
                 .FromFactory(() => repo));

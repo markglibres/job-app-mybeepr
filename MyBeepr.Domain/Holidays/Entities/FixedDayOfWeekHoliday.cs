@@ -13,6 +13,7 @@ namespace MyBeepr.Domain.Holidays.Entities
         public int DayOrder { get; private set; }
         public HolidayTypes HolidayType { get; private set; }
         public bool IsDisabled { get; private set; }
+        public string Name { get; private set; }
 
         [JsonConstructor]
         private FixedDayOfWeekHoliday()
@@ -20,12 +21,14 @@ namespace MyBeepr.Domain.Holidays.Entities
         }
 
         public FixedDayOfWeekHoliday(
+            string name,
             int month,
             DayOfWeek dayOfWeek,
             int dayOrder)
         {
             Guard.Against.InvalidFixedDayOfWeekHoliday<DomainException>(month, dayOfWeek, dayOrder);
 
+            Name = name;
             Month = month;
             DayOfWeek = dayOfWeek;
             DayOrder = dayOrder;

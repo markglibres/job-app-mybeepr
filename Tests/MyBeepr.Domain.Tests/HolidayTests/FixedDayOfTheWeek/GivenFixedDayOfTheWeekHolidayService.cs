@@ -16,8 +16,8 @@ namespace MyBeepr.Domain.Tests.HolidayTests.FixedDayOfTheWeek
         public override async Task GivenAsync()
         {
             var repo = Fixture.Create<InMemoryRepository<FixedDayOfWeekHoliday>>();
-            await repo.InsertAsync(new FixedDayOfWeekHoliday(5, DayOfWeek.Wednesday, 2));
-            await repo.InsertAsync(new FixedDayOfWeekHoliday(6, DayOfWeek.Monday, 2));
+            await repo.InsertAsync(new FixedDayOfWeekHoliday("Every 2nd Wed of May",5, DayOfWeek.Wednesday, 2));
+            await repo.InsertAsync(new FixedDayOfWeekHoliday("Every 2nd Mon of June",6, DayOfWeek.Monday, 2));
 
             Fixture.Customize<IRepository<FixedDayOfWeekHoliday>>(o => o
                 .FromFactory(() => repo));

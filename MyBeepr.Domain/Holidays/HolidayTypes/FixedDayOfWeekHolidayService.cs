@@ -33,7 +33,7 @@ namespace MyBeepr.Domain.Holidays
                 for (var i = 1; i <= yearDiff; i++)
                     years.Add(start.Year + i);
 
-            var holidaysWithExactDate = new List<DateTime>();
+            var holidaysWithExactDate = new List<Holiday>();
             foreach (var year in years)
             {
                 var dates = holidays.Select(h =>
@@ -52,15 +52,16 @@ namespace MyBeepr.Domain.Holidays
 
                     offset += (h.DayOrder - 1) * 7;
 
-                    return firstDayOfTheMonth.AddDays(offset);
+                    var date = firstDayOfTheMonth.AddDays(offset);
+
+                    return new Holiday(h.Name, date, HolidayTypes.FixedDayOfWeek);
                 });
-                holidaysWithExactDate.AddRange(dates.Where(h => start.Date < h.Date && h.Date < end.Date));
+
+                holidaysWithExactDate.AddRange(dates
+                    .Where(h => start.Date.Date < h.Date.Date && h.Date.Date < end.Date.Date));
             }
 
-            var validHolidays = holidaysWithExactDate
-                .Select(h => new Holiday(h, HolidayTypes.FixedDayOfWeek));
-
-            return validHolidays;
+            return holidaysWithExactDate;
         }
     }
 }

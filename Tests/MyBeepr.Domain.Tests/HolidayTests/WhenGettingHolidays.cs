@@ -24,11 +24,11 @@ namespace MyBeepr.Domain.Tests.HolidayTests
             var slidingDay = Fixture.Create<Mock<IHolidayTypeService>>();
 
             fixedDay.Setup(s => s.GetHolidays(It.IsAny<DateTime>(), It.IsAny<DateTime>()))
-                .ReturnsAsync(new List<Holiday> {new Holiday(DateTime.Now, HolidayTypes.FixedDay)});
+                .ReturnsAsync(new List<Holiday> {new Holiday("Holiday 1", DateTime.Now, HolidayTypes.FixedDay)});
             fixedDayOfWeek.Setup(s => s.GetHolidays(It.IsAny<DateTime>(), It.IsAny<DateTime>()))
-                .ReturnsAsync(new List<Holiday> {new Holiday(DateTime.Now, HolidayTypes.FixedDayOfWeek) });
+                .ReturnsAsync(new List<Holiday> {new Holiday("Holiday 2", DateTime.Now, HolidayTypes.FixedDayOfWeek) });
             slidingDay.Setup(s => s.GetHolidays(It.IsAny<DateTime>(), It.IsAny<DateTime>()))
-                .ReturnsAsync(new List<Holiday> {new Holiday(DateTime.Now, HolidayTypes.SlidingDay) });
+                .ReturnsAsync(new List<Holiday> {new Holiday("Holiday 3", DateTime.Now, HolidayTypes.SlidingDay) });
 
             Fixture.Customize<IEnumerable<IHolidayTypeService>>(o => o
                 .FromFactory(() => new List<IHolidayTypeService>

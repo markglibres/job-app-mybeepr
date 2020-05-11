@@ -8,9 +8,14 @@ namespace MyBeepr.Domain.Holidays
         public DateTime Date { get; private set; }
         public HolidayTypes HolidayType { get; private set; }
         public bool IsDisabled { get; private set; }
+        public string Name { get; private set; }
 
-        public Holiday(DateTime date, HolidayTypes holidayType)
+        public Holiday(
+            string name,
+            DateTime date, 
+            HolidayTypes holidayType)
         {
+            Name = name;
             Date = date;
             HolidayType = holidayType;
         }

@@ -11,6 +11,7 @@ namespace MyBeepr.Domain.Holidays.Entities
         public int Month { get; private set; }
         public HolidayTypes HolidayType { get; private set; }
         public bool IsDisabled { get; private set; }
+        public string Name { get; private set;  }
 
         [JsonConstructor]
         private SlidingDayHoliday()
@@ -18,11 +19,13 @@ namespace MyBeepr.Domain.Holidays.Entities
         }
 
         public SlidingDayHoliday(
+            string name,
             int month,
             int day)
         {
             Guard.Against.InvalidMonthDayHoliday<DomainException>(month, day);
 
+            Name = name;
             Month = month;
             HolidayType = HolidayTypes.SlidingDay;
             Day = day;
